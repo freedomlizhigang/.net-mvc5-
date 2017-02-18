@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="sg2017" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="sg2017Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="User" EntityType="sg2017.User" />
+    <EntitySet Name="Role" EntityType="sg2017.Role" />
+    <AssociationSet Name="UserRole" Association="sg2017.UserRole">
+      <End Role="User" EntitySet="User" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <EntitySet Name="Menu" EntityType="sg2017.Menu" />
+    <EntitySet Name="Privs" EntityType="sg2017.Privs" />
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Status" Type="Int16" Nullable="false" DefaultValue="1" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" />
+    <Property Name="Updated_at" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="sg2017.UserRole" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Status" Type="Int32" Nullable="false" DefaultValue="1" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" />
+    <Property Name="Updated_at" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="sg2017.UserRole" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <Association Name="UserRole">
+    <End Type="sg2017.User" Role="User" Multiplicity="*" />
+    <End Type="sg2017.Role" Role="Role" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Label" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Sort" Type="Int32" Nullable="false" DefaultValue="0" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" />
+    <Property Name="Updated_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Privs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Label" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="Created_at" Type="DateTime" Nullable="false" />
+    <Property Name="Updated_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+</Schema>
