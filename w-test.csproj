@@ -166,27 +166,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\YgController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Filters\PrivFilter.cs" />
     <Compile Include="Filters\AdminUser.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Menu.cs" />
-    <Compile Include="Models\Priv.cs" />
+    <Compile Include="Models\BaseData.cs" />
     <Compile Include="Models\Privs.cs" />
-    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Sg2016.cs" />
-    <Compile Include="Models\Sg2017.cs" />
     <Compile Include="Models\Sgnlist.cs" />
     <Compile Include="Models\sgnlist01.cs" />
     <Compile Include="Models\tsjlist.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Models\yglist.cs" />
     <Compile Include="Models\Yguser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="w_test\Models\RoleWithControllerAction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -223,16 +218,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Menus\Create.cshtml" />
-    <Content Include="Views\Menus\Delete.cshtml" />
-    <Content Include="Views\Menus\Details.cshtml" />
-    <Content Include="Views\Menus\Edit.cshtml" />
-    <Content Include="Views\Menus\Index.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\Priv.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Yg\Index.cshtml" />
+    <Content Include="App_Code\Gate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

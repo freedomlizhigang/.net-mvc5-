@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Message</h2>
+
+
+
+@if (Gate.Priv("yg/index"))
+{
+    <button>有</button>
+}

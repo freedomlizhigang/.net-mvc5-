@@ -1,0 +1,12 @@
+﻿@functions {
+    public static bool Priv(string url)
+    {
+        var priv = w_test.Models.BaseData.privs.Find(p => p.yflb == Session["yflb"].ToString() && p.url == url);
+        // 找到就说明有权限
+        if (priv == null)
+        {
+            return false;
+        }
+        return true;
+    }
+}

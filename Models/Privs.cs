@@ -12,5 +12,6 @@ namespace w_test.Models
         public string yflb{ get; set; }
         public string url { get; set; }
         public string label { get; set; }
+        public bool display { get; set; } = true;
     }
 }

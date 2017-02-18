@@ -37,12 +37,16 @@ namespace w_test.Filters
         {
 
             // 判断是否usercode是空，如果是空说明没有登陆
-            if (httpContext.Session["usercode"] == null && string.IsNullOrEmpty(httpContext.Session["usercode"].ToString()))
+            if (httpContext.Session["usercode"] == null)
             {
                 return false;//进入HandleUnauthorizedRequest 
             }
             else
             {
+                if(string.IsNullOrEmpty(httpContext.Session["usercode"].ToString()))
+                {
+                    return false;//进入HandleUnauthorizedRequest 
+                }
                 // 认证成功
                 return true;
             }

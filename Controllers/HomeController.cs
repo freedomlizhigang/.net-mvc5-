@@ -13,52 +13,39 @@ namespace w_test.Controllers
         private Sg2016 db = new Sg2016();
         public ActionResult Index()
         {
-            return View();
-        }
-
-        [AdminUser]
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-
-        public ActionResult Login()
-        {
-            ViewBag.Message = "欢迎登陆！";
-
-            return View();
+            ViewBag.Message = "欢迎登陆复明验光系统！";
+            return PartialView();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public RedirectToRouteResult DoLogin()
+        public RedirectToRouteResult Login()
         {
             string username = Request.Form["username"];
             string password = Request.Form["password"];
             var yguser = from y in db.Ygusers
-                          where y.usercode == username && y.userpass == password
-                          select y;
+                         where y.usercode == username && y.userpass == password
+                         select y;
             if (yguser.Any())
             {
                 Session["usercode"] = yguser.First().usercode;
                 Session["username"] = yguser.First().username;
                 Session["yflb"] = yguser.First().yflb != "" ? yguser.First().yflb : null;
-                return RedirectToRoute(new { controller = "Menus", action = "Index" });
+                return RedirectToRoute(new { controller = "Yg", action = "Index" });
             }
             else
             {
-                return RedirectToRoute(new { controller = "Home", action = "Login" });
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
+        }
+
+        // 生成顶部菜单
+        [ChildActionOnly]
+        public ActionResult Menu()
+        {
+            string yflb = Session["yflb"] == null ? "" : Session["yflb"].ToString();
+            var menus = BaseData.privs.Where(y => y.yflb == yflb && y.display == true).ToList();
+            return PartialView(menus);
         }
     }
 }
