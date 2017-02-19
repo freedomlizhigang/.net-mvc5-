@@ -1,7 +1,8 @@
 ﻿@functions {
     public static bool Priv(string url)
     {
-        var priv = w_test.Models.BaseData.privs.Find(p => p.yflb == Session["yflb"].ToString() && p.url == url);
+        string yflb = Session["yflb"] == null ? "" : Session["yflb"].ToString();
+        var priv = w_test.Models.BaseData.privs.Find(p => p.yflb == yflb && p.url == url);
         // 找到就说明有权限
         if (priv == null)
         {

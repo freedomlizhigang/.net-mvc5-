@@ -6,34 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 衡水复明验光系统</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="/Content/pure-ie8-media.css">
+    <![endif]-->
     @Scripts.Render("~/bundles/jquery")
+    <script src="/Content/laydate/laydate.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("验光系统", "Index", "Yg", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                    @Html.Action("Menu", "Home");
-            </div>
+    <!-- 头部 -->
+    <header class="top clearfix overh">
+        <div class="pure-u-11-12 m-a">
+            <h1 class="logo f-l">@Html.ActionLink("验光系统", "Index", "Yg")</h1>
+            <span class="userinfo f-r">
+                欢迎回来：@Session["username"]
+                 | 
+                @Html.ActionLink("退出", "Logout", "Home","",new { @class = "color-blue"})
+            </span>
         </div>
-    </div>
-    <div class="container body-content">
+    </header>
+    <!-- 导航 -->
+    <nav class="menu clearfix overh pure-u-11-12 m-a">
+        <ul id="mainmenu">
+            @Html.Action("Menu", "Home")
+        </ul>
+    </nav>
+    <!-- 主内容 -->
+    <section class="content overh pure-u-11-12 m-a">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - 衡水复明验光系统</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    </section>
+    <!-- 底 -->
+    <footer class="copyright clearfix">
+        <div class="pure-u-11-12 m-a">
+            <p class="f-l">&copy; @DateTime.Now.Year - 感谢使用衡水复明眼科医院验光系统！</p>
+            <a href="http://www.xi-yi.ren/" target="_blank" class="color_f60 f-r">NETMVC-CMF V 1.0</a>
+        </div>
+    </footer>
+    <script>
+        $(function(){
+            var url = "{{ $sites['url'] }}/{{ $url }}";
+            $('.menu_a[href="'+ url +'"]').parent('li').addClass('hover').siblings('li').removeClass('hover');
+        })
+    </script>
 </body>
 </html>

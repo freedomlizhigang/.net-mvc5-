@@ -68,3 +68,7 @@ E:\WPF\w-test\w-test\bin\Autofac.Integration.Mvc.dll
 E:\WPF\w-test\w-test\bin\Autofac.xml
 E:\WPF\w-test\w-test\bin\Autofac.Integration.Mvc.xml
 E:\WPF\w-test\w-test\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\WPF\w-test\w-test\bin\PagedList.dll
+E:\WPF\w-test\w-test\bin\PagedList.Mvc.dll
+E:\WPF\w-test\w-test\bin\PagedList.xml
+E:\WPF\w-test\w-test\bin\PagedList.Mvc.xml

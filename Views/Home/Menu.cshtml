@@ -1,11 +1,6 @@
-﻿@Model IEnumerable<w-test.Models.Privs>
-    <ul class="nav navbar-nav">
-
-        @*<li>@Html.ActionLink("首页", "Index", "Yg")</li>*@
-
-        @foreach (var m in Model)
-        {
-            <li><a href="/@m.url" class="menu_a">@m.name</a></li>
-        }
-    </ul>
-
+﻿@using w_test.Models
+@{var menu = ViewData["menus"] as IEnumerable<Privs>;}
+@foreach (var m in menu)
+{
+<li><a href="/@m.url" class="menu_a">@m.name</a></li>
+}

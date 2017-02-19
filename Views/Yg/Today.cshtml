@@ -1,0 +1,59 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<w_test.Models.Sgnlist>
+@{
+    ViewBag.Title = "当日验光";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="pure-table mt20">
+    <thead>
+        <tr>
+            <th>时间</th>
+            <th>姓名</th>
+            <th width="80">病例号</th>
+            <th width="180">电话</th>
+            <th width="150">地址</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr class="tr-bg">
+            <td>@Html.DisplayFor(modelItem => item.zwdate)</td>
+            <td>@Html.DisplayFor(modelItem => item.xm) 
+            @if (Gate.Priv("yg/edit")) {
+                @Html.ActionLink("添加", "Edit", "Yg", "", new { @class = "color-red" })
+            }
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.blid)</td>
+            <td>@Html.DisplayFor(modelItem => item.tel)</td>
+            <td>@Html.DisplayFor(modelItem => item.address)</td>
+        </tr>
+    }
+
+</table>
+
+<div class="pages clearfix">
+    <div class="f-r">
+        @Html.PagedListPager(Model, page => Url.Action("All", new { page }))
+    </div>
+    @*当前是第 @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) 页，*@
+    <div class="f-r page_action">共 @Model.PageCount 页 </div>
+</div>
+<script>
+        $(function () {
+            $('.show_click').click(function () {
+                $('.show_con').addClass('hidden');
+                var show = $(this).attr("data-show");
+                if ($(this).hasClass('color-red')) {
+                    $('.show_click').html('展开').removeClass('color-blue').addClass('color-red');
+                    $(this).html('关闭').removeClass('color-red').addClass('color-blue');
+                    $('.show_con_' + show).removeClass('hidden');
+                }
+                else {
+                    $(this).html('展开').removeClass('color-blue').addClass('color-red');
+                    $('.show_con_' + show).addClass('hidden');
+                }
+                return;
+            });
+        });
+</script>

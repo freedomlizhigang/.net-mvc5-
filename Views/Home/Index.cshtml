@@ -6,47 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Message</title>
     @Styles.Render("~/Content/css")
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="/Content/pure-ie8-media.css">
+    <![endif]-->
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <div class="login_box pure-u-md-1-3 pure-u-xl-1-4 pure-u-sm-1-2 m-a">
+        <h1>衡水复明-验光中心</h1>
 
-    <div class="container body-content">
-            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post,new { @class = "pure-form pure-form-stacked" }))
+        {
+            @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.Label("用户名：", htmlAttributes: new { @class = "control-label col-md-1" })
-                    <div class="col-md-10">
-                        <input type="text" name="username" value="" class="form-control text-box single-line" />
-                        @Html.ValidationMessage("username", "", new { @class = "text-danger" })
-                    </div>
-                </div>
+            <label for="username">用户名：</label>
+            <input type="text" name="username" value="" class="pure-input-1">
+            @Html.ValidationMessage("username", "", new { @class = "text-danger" })
 
-                <div class="form-group">
-                    @Html.Label("密码：", htmlAttributes: new { @class = "control-label col-md-1" })
-                    <div class="col-md-10">
-                        <input type="password" name="password" value="" class="form-control text-box single-line" />
-                        @Html.ValidationMessage("password", "", new { @class = "text-danger" })
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-1 col-md-10">
-                        <input type="submit" value="登陆" class="btn btn-default" />
-                        <input type="reset" value="重填" class="btn btn-default" />
-                    </div>
-                </div>
+            <label for="password">密码：</label>
+            <input type="password" name="password" class="pure-input-1">
+            @Html.ValidationMessage("password", "", new { @class = "text-danger" })
+
+            <div class="pure-u-1 clearfix mt10">
+                <input type="submit" value="登陆" class="pure-button pure-button-primary pure-input-1-2 f-l">
+                <input type="reset" value="重填" class="pure-button pure-input-1-2">
             </div>
-            }
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - 衡水复明眼科医院</p>
-            </footer>
+        }
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>

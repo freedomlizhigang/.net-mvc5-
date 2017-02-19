@@ -44,8 +44,8 @@ namespace w_test.Controllers
         public ActionResult Menu()
         {
             string yflb = Session["yflb"] == null ? "" : Session["yflb"].ToString();
-            var menus = BaseData.privs.Where(y => y.yflb == yflb && y.display == true).ToList();
-            return PartialView(menus);
+            ViewData["menus"] = BaseData.privs.Where(y => y.yflb == yflb && y.display == true).ToList();
+            return PartialView();
         }
     }
 }

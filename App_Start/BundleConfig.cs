@@ -24,7 +24,7 @@ namespace w_test
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/pure-min.css",
                       "~/Content/site.css"));
         }
     }

@@ -1,0 +1,455 @@
+﻿@model IEnumerable<w_test.Models.Sgnlist>
+@{
+    ViewBag.Title = "综合查询";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+@using (Html.BeginForm("All", "Yg", FormMethod.Get))
+{
+    <div class="col-md-3">
+        <label>就诊号： </label><input type="text" name="blid" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label>电话： </label><input type="text" name="tel" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label>姓名：</label><input type="text" name="xm" class="form-control" />
+    </div>
+
+    <div class="col-md-3">
+        <label>提交：</label>
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+}
+
+<table class="pure-table pure-table-f">
+    <thead>
+        <tr>
+            <th>时间</th>
+            <th>姓名</th>
+            <th width="80">病例号</th>
+            <th width="180">电话</th>
+            <th width="150">地址</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.zwdate)</td>
+            <td>@Html.DisplayFor(modelItem => item.xm) <span class="color-red show_click" data-show="@Html.DisplayFor(modelItem => item.aid)">展开</span></td>
+            <td>@Html.DisplayFor(modelItem => item.blid)</td>
+            <td>@Html.DisplayFor(modelItem => item.tel)</td>
+            <td>@Html.DisplayFor(modelItem => item.address)</td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <table class="pure-table mt10">
+                    <tr>
+                        <td rowspan="2">原镜</td>
+                        <td>R</td>
+                        <td>
+                            <input type="text" name="YR" value="" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td rowspan="2">矫正</td>
+                        <td>R</td>
+                        <td>
+                            <input type="text" name="JR" value="@Html.DisplayFor(modelItem => item.JR)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>
+                            <input type="text" name="YL" value="@Html.DisplayFor(modelItem => item.YL)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>L</td>
+                        <td>
+                            <input type="text" name="JL" value="@Html.DisplayFor(modelItem => item.JL)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                    </tr>
+                </table>
+                <table class="pure-table mt10">
+                    <tr>
+                        <td>用法</td>
+                        <td></td>
+                        <td>裸视</td>
+                        <td>球镜</td>
+                        <td>柱镜</td>
+                        <td>轴向</td>
+                        <td>棱镜</td>
+                        <td>基底</td>
+                        <td>矫正</td>
+                        <td colspan="2">备注</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="stxt1">散瞳/远用</td>
+                        <td>R</td>
+                        <td>
+                            <input type="text" name="A101" value="@Html.DisplayFor(modelItem => item.A101)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A102" value="@Html.DisplayFor(modelItem => item.A102)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A103" value="@Html.DisplayFor(modelItem => item.A103)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A104" value="@Html.DisplayFor(modelItem => item.A104)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A105" value="@Html.DisplayFor(modelItem => item.A105)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A106" value="@Html.DisplayFor(modelItem => item.A106)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A107" value="@Html.DisplayFor(modelItem => item.A107)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td colspan="2">
+                            <input type="text" name="A108" value="@Html.DisplayFor(modelItem => item.A108)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>
+                            <input type="text" name="A111" value="@Html.DisplayFor(modelItem => item.A111)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A112" value="@Html.DisplayFor(modelItem => item.A112)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A113" value="@Html.DisplayFor(modelItem => item.A113)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A114" value="@Html.DisplayFor(modelItem => item.A114)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A115" value="@Html.DisplayFor(modelItem => item.A115)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A116" value="@Html.DisplayFor(modelItem => item.A116)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A117" value="@Html.DisplayFor(modelItem => item.A117)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td colspan="2">
+                            <input type="text" name="A118" value="@Html.DisplayFor(modelItem => item.A118)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="stxt2">小瞳/近用</td>
+                        <td>R</td>
+                        <td>
+                            <input type="text" name="A121" value="@Html.DisplayFor(modelItem => item.A121)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A122" value="@Html.DisplayFor(modelItem => item.A122)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A123" value="@Html.DisplayFor(modelItem => item.A123)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A124" value="@Html.DisplayFor(modelItem => item.A124)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A125" value="@Html.DisplayFor(modelItem => item.A125)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A126" value="@Html.DisplayFor(modelItem => item.A126)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A127" value="@Html.DisplayFor(modelItem => item.A127)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td colspan="2">
+                            <input type="text" name="A128" value="@Html.DisplayFor(modelItem => item.A128)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>
+                            <input type="text" name="A131" value="@Html.DisplayFor(modelItem => item.A131)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A132" value="@Html.DisplayFor(modelItem => item.A132)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A133" value="@Html.DisplayFor(modelItem => item.A133)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A134" value="@Html.DisplayFor(modelItem => item.A134)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A135" value="@Html.DisplayFor(modelItem => item.A135)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A136" value="@Html.DisplayFor(modelItem => item.A136)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A137" value="@Html.DisplayFor(modelItem => item.A137)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td colspan="2">
+                            <input type="text" name="A138" value="@Html.DisplayFor(modelItem => item.A138)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" width="80">配镜</td>
+                        <td>R</td>
+                        <td>
+                            <input type="text" name="A141" value="@Html.DisplayFor(modelItem => item.A141)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A142" value="@Html.DisplayFor(modelItem => item.A142)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A143" value="@Html.DisplayFor(modelItem => item.A143)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A144" value="@Html.DisplayFor(modelItem => item.A144)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A145" value="@Html.DisplayFor(modelItem => item.A145)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A146" value="@Html.DisplayFor(modelItem => item.A146)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A147" value="@Html.DisplayFor(modelItem => item.A147)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td colspan="2">
+                            <input type="text" name="A148" value="@Html.DisplayFor(modelItem => item.A148)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>
+                            <input type="text" name="A151" value="@Html.DisplayFor(modelItem => item.A151)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A152" value="@Html.DisplayFor(modelItem => item.A152)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A153" value="@Html.DisplayFor(modelItem => item.A153)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A154" value="@Html.DisplayFor(modelItem => item.A154)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A155" value="@Html.DisplayFor(modelItem => item.A155)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A156" value="@Html.DisplayFor(modelItem => item.A156)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td>
+                            <input type="text" name="A157" value="@Html.DisplayFor(modelItem => item.A157)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td colspan="2">
+                            <input type="text" name="A158" value="@Html.DisplayFor(modelItem => item.A158)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>验光员</td>
+                        <td>
+
+
+                            <input type="text" value="@Html.DisplayFor(modelItem => item.username)" readonly="readonly" class="pure-u-3-4">
+                        </td>
+                        <td></td>
+                        <td>
+                            医生
+                        </td>
+                        <td>
+
+                            <input type="text" name="dctname" value="@Html.DisplayFor(modelItem => item.dctname)" readonly="readonly" class="pure-u-3-4">
+
+                        </td>
+                        <td></td>
+                        <td>
+
+                            销售
+                        </td>
+                        <td>
+
+                            <input type="text" name="userzj" value="@Html.DisplayFor(modelItem => item.userzj)" readonly="readonly" class="pure-u-3-4">
+
+                        </td>
+                        <td></td>
+                        <td width="60">
+
+                            制镜
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+                <div class="hidden show_con show_con_@Html.DisplayFor(modelItem => item.aid)">
+                    <table class="mt10 pure-table sgn1">
+                        <tr>
+                            <td colspan="8">视功能A</td>
+                        </tr>
+                        <tr>
+                            <td>worth4点</td>
+                            <td>
+                                <input type="text" name="AA01" value="@Html.DisplayFor(modelItem => item.AA01)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>NRA</td>
+                            <td>
+                                <input type="text" name="AA02" value="@Html.DisplayFor(modelItem => item.AA02)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>PRA</td>
+                            <td>
+                                <input type="text" name="AA03" value="@Html.DisplayFor(modelItem => item.AA03)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>BCC</td>
+                            <td>
+                                <input type="text" name="AA04" value="@Html.DisplayFor(modelItem => item.AA04)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="pure-table mt10 sgn2">
+                        <tr>
+                            <td colspan="3">视功能B</td>
+                        </tr>
+                        <tr>
+                            <td style="width:138px;">项目</td>
+                            <td style="width:276px;">结果</td>
+                            <td style="width:276px;">参考值</td>
+                        </tr>
+                        <tr>
+                            <td>worth4点</td>
+                            <td>
+                                <input type="text" name="BB01" value="@Html.DisplayFor(modelItem => item.BB01)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>4个</td>
+                        </tr>
+                        <tr>
+                            <td>5m水平隐斜</td>
+                            <td>
+                                <input type="text" name="BB02" value="@Html.DisplayFor(modelItem => item.BB02)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>外隐斜-1±2Δ</td>
+                        </tr>
+                        <tr>
+                            <td>5m负融像NRC</td>
+                            <td>
+                                <input type="text" name="BB03" value="@Html.DisplayFor(modelItem => item.BB03)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>7±3/4±2 即 破烈点/恢复点</td>
+                        </tr>
+                        <tr>
+                            <td>5m正融像PRC</td>
+                            <td>
+                                <input type="text" name="BB04" value="@Html.DisplayFor(modelItem => item.BB04)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>9±4/19±8/10±4/ 即 模糊点/破裂点/恢复点</td>
+                        </tr>
+                        <tr>
+                            <td>40cm水平隐斜</td>
+                            <td>
+                                <input type="text" name="BB05" value="@Html.DisplayFor(modelItem => item.BB05)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>外隐斜-3±3Δ</td>
+                        </tr>
+                        <tr>
+                            <td>AC/A</td>
+                            <td>
+                                <input type="text" name="BB06" value="@Html.DisplayFor(modelItem => item.BB06)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>3/1～5/1</td>
+                        </tr>
+                        <tr>
+                            <td>40cm负融像NRC</td>
+                            <td>
+                                <input type="text" name="BB07" value="@Html.DisplayFor(modelItem => item.BB07)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>13±4/21±4/13±5</td>
+                        </tr>
+                        <tr>
+                            <td>40cm正融像PRC</td>
+                            <td>
+                                <input type="text" name="BB08" value="@Html.DisplayFor(modelItem => item.BB08)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>17±5/21±6/11±7</td>
+                        </tr>
+                        <tr>
+                            <td>调节幅度AMP</td>
+                            <td>
+                                <input type="text" name="BB09" value="@Html.DisplayFor(modelItem => item.BB09)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>15-0.25＊年龄</td>
+                        </tr>
+                        <tr>
+                            <td>负相对幅度NRA</td>
+                            <td>
+                                <input type="text" name="BB10" value="@Html.DisplayFor(modelItem => item.BB10)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>为+2.00～+2.50D</td>
+                        </tr>
+                        <tr>
+                            <td>调节反应BCC</td>
+                            <td>
+                                <input type="text" name="BB11" value="@Html.DisplayFor(modelItem => item.BB11)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>为+0.25～+0.75D</td>
+                        </tr>
+                        <tr>
+                            <td>正相对调节PRA</td>
+                            <td>
+                                <input type="text" name="BB12" value="@Html.DisplayFor(modelItem => item.BB12)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>≥-2.50D</td>
+                        </tr>
+                        <tr>
+                            <td>集合近点</td>
+                            <td>
+                                <input type="text" name="BB13" value="@Html.DisplayFor(modelItem => item.BB13)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                            <td>3±4/5±5CM</td>
+                        </tr>
+                    </table>
+
+                    <table class="mt10 pure-table ygs">
+                        <tr>
+                            <td>视功能分析</td>
+                            <td>
+                                <input type="text" name="M101" value="@Html.DisplayFor(modelItem => item.M101)" readonly="readonly" class="pure-u-3-4">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>医生建议</td>
+                            <td>
+                                <textarea name="M102" readonly="readonly" class="pure-u-3-4">@Html.DisplayFor(modelItem => item.M102)</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="mt10 pure-table">
+                        <tr>
+                            <td>验光师签字:</td>
+                            <td><input type="text" name="username" value="@Html.DisplayFor(modelItem => item.username)" readonly="readonly" class="pure-u-3-4"></td>
+                            <td>医生签字:</td>
+                            <td><input type="text" name="dctname" value="@Html.DisplayFor(modelItem => item.dctname)" readonly="readonly" class="pure-u-3-4"></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script>
+    $(function () {
+        $('.show_click').click(function () {
+            $('.show_con').addClass('hidden');
+            var show = $(this).attr("data-show");
+            if ($(this).hasClass('color-red')) {
+                $('.show_click').html('展开').removeClass('color-blue').addClass('color-red');
+                $(this).html('关闭').removeClass('color-red').addClass('color-blue');
+                $('.show_con_' + show).removeClass('hidden');
+            }
+            else {
+                $(this).html('展开').removeClass('color-blue').addClass('color-red');
+                $('.show_con_' + show).addClass('hidden');
+            }
+            return;
+        });
+    });
+</script>
